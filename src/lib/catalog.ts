@@ -1,0 +1,71 @@
+export const SYSTEM_UTILITY_SLUG = "__system_style_mode__";
+export const SYSTEM_STYLE_SLUG = "__system_utility_mode__";
+
+export const UTILITY_FUNCTIONS = [
+  { slug: "portrait-photography", nameZh: "人物写真" },
+  { slug: "research-visualization", nameZh: "科研绘图" },
+  { slug: "ppt-design", nameZh: "PPT设计" },
+  { slug: "poster-design", nameZh: "海报设计" },
+  { slug: "ui-design", nameZh: "UI设计" },
+  { slug: "module-breakdown-selection", nameZh: "模块拆解" },
+];
+
+export const ART_STYLES = [
+  "像素艺术",
+  "8位风",
+  "动漫风",
+  "水彩",
+  "油画",
+  "蓝图",
+  "等距视角",
+  "低多边形",
+  "霓虹光效",
+  "写实摄影",
+  "电影感",
+  "抽象艺术",
+  "墨线画",
+  "蚀刻版画",
+  "炭笔画",
+  "粉彩/色粉",
+  "合成波",
+  "蒸汽朋克",
+  "赛博朋克",
+  "浮世绘",
+  "极简线条",
+  "金箔",
+  "全息",
+  "技术剖面图",
+  "吉卜力风",
+  "波普艺术",
+  "印象派",
+  "超现实主义",
+  "装饰艺术",
+  "新艺术运动",
+  "蒸汽波",
+  "故障艺术",
+  "涂鸦/街画",
+  "3D 渲染",
+  "黏土/定格",
+  "剪纸风",
+  "拼贴画",
+  "铅笔素描",
+  "美漫风",
+  "赛璐璐上色",
+  "体素风",
+  "水粉画",
+  "孔版印刷",
+  "中国水墨",
+  "彩色玻璃",
+  "木刻版画",
+  "黑色电影",
+  "双重曝光",
+  "扁平设计",
+  "乐高风",
+];
+
+export const FILTER_MODES = [
+  { value: "utility", label: "按实用功能筛选" },
+  { value: "style", label: "按绘图风格筛选" },
+] as const;
+
+export type FilterMode = (typeof FILTER_MODES)[number]["value"];

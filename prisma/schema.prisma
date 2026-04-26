@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  displayName  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model UtilityFunction {
+  id        String      @id @default(cuid())
+  slug      String      @unique
+  nameZh    String      @unique
+  nameEn    String?
+  images    ImageItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model ArtStyle {
+  id        String      @id @default(cuid())
+  slug      String      @unique
+  nameZh    String      @unique
+  images    ImageItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model ImageItem {
+  id                String          @id @default(cuid())
+  title             String
+  imageUrl          String
+  r2Key             String?
+  promptZh          String          @db.Text
+  promptEn          String?         @db.Text
+  width             Int?
+  height            Int?
+  utilityFunctionId String
+  artStyleId        String
+  utilityFunction   UtilityFunction @relation(fields: [utilityFunctionId], references: [id], onDelete: Restrict)
+  artStyle          ArtStyle        @relation(fields: [artStyleId], references: [id], onDelete: Restrict)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([utilityFunctionId])
+  @@index([artStyleId])
+  @@index([createdAt(sort: Desc)])
+}
